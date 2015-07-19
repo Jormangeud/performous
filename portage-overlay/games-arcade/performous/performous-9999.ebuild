@@ -1,12 +1,12 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/performous/performous-0.7.0-r1.ebuild,v 1.1 2013/01/24 17:04:10 hasufell Exp $
+# $Header: $
 
 EAPI=5
 [[ ${PV} = 9999 ]] && GIT="git-2"
 
 CMAKE_REMOVE_MODULES="yes"
-CMAKE_REMOVE_MODULES_LIST="FindALSA FindBoost FindGettext FindJpeg FindPng FindTiff FindZ"
+CMAKE_REMOVE_MODULES_LIST="FindALSA FindBoost FindGettext FindTiff FindZ"
 
 inherit eutils base cmake-utils games ${GIT}
 
@@ -37,7 +37,7 @@ else
     EGIT_REPO_URI="git://github.com/performous/performous.git"
 	PATCHES=(
 		$PATCHES
-		"${FILESDIR}"/${PN}-20141104-cmake.patch
+		"${FILESDIR}"/${PN}-20150719-cmake.patch
 	)
 fi
 
@@ -57,7 +57,6 @@ RDEPEND="dev-cpp/glibmm
 	dev-libs/glib
 	dev-libs/libxml2
 	gnome-base/librsvg
-	tools? ( media-gfx/imagemagick )
 	virtual/jpeg
 	media-libs/libpng:0
 	media-libs/libsdl2[joystick,video]
@@ -70,6 +69,7 @@ RDEPEND="dev-cpp/glibmm
 	x11-libs/gdk-pixbuf
 	x11-libs/pango
 	midi? ( media-libs/portmidi )
+	tools? ( media-gfx/imagemagick )
 	webcam? ( media-libs/opencv )"
 DEPEND="${RDEPEND}
 	media-libs/glew
